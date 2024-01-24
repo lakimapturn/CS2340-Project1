@@ -3,7 +3,7 @@ package com.example.project1.models;
 import java.time.LocalDateTime;
 
 public class Exam {
-    private String className;
+    private String courseName;
     private LocalDateTime dateTime;
     private String location;
 
@@ -11,14 +11,14 @@ public class Exam {
         this(null, null, null);
     }
 
-    public Exam(String className, LocalDateTime dateTime, String location) {
-        this.className = className;
+    public Exam(String courseName, LocalDateTime dateTime, String location) {
+        this.courseName = courseName;
         this.dateTime = dateTime;
         this.location = location;
     }
 
-    public String getClassName() {
-        return className;
+    public String getCourseName() {
+        return courseName;
     }
 
     public LocalDateTime getData() {
@@ -29,8 +29,8 @@ public class Exam {
         return location;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public void setData(LocalDateTime dateTime) {
