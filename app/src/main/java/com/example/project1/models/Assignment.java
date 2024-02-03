@@ -1,13 +1,13 @@
 package com.example.project1.models;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Assignment {
     private String title;
-    private LocalDateTime dueDate;
+    private Date dueDate;
     private String courseName;
 
-    public Assignment(String title, LocalDateTime dueDate, String courseName) {
+    public Assignment(String title, Date dueDate, String courseName) {
         this.title = title;
         this.dueDate = dueDate;
         this.courseName = courseName;
@@ -25,11 +25,11 @@ public class Assignment {
         this.title = title;
     }
 
-    public LocalDateTime getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 
