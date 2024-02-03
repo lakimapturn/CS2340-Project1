@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -23,10 +24,16 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
     ArrayList<T> list;
     Context context;
 
+    private OnItemClickListenerInterface onItemClickListener;
+
     public ListAdapter(@NonNull Context context, ArrayList<T> list) {
         super(context, R.layout.list_item, list);
         this.list = list;
         this.context = context;
+    }
+
+    public void setOnItemClickListener(OnItemClickListenerInterface listener) {
+        this.onItemClickListener = listener;
     }
 
     @NonNull
@@ -42,13 +49,29 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
         TextView field1 = view.findViewById(R.id.title);
         TextView field2 = view.findViewById(R.id.textfield2);
         TextView field3 = view.findViewById(R.id.textfield3);
-        Button edit = view.findViewById(R.id.edit);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(position);
+                }
+            }
+        });
+        Button delete = view.findViewById(R.id.delete_button);
+        delete.setOnClickListener(l -> {
+            list.remove(position);
+            notifyDataSetChanged();
+            System.out.println(list);
+        });
 
         if (item instanceof Assignment) {
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
+
             Assignment copy = (Assignment) item;
             field1.setText(copy.getTitle());
             field2.setText(copy.getClassName());
-            field3.setText(copy.getDueDate().toString());
+            field3.setText(sdf.format(copy.getDueDate()));
         } else if (item instanceof ClassInfo) {
             ClassInfo copy = (ClassInfo) item;
             field1.setText(copy.getCourseName());
@@ -60,6 +83,11 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
             field2.setText(copy.getLocation());
             field3.setText(copy.getData().toString());
         }
+
         return view;
+    }
+
+    public interface OnItemClickListenerInterface {
+        void onItemClick(int position);
     }
 }

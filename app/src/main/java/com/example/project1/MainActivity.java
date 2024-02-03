@@ -1,29 +1,18 @@
 package com.example.project1;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
-import com.example.project1.components.ListAdapter;
-import com.example.project1.databinding.ActivityMainBinding;
-import com.example.project1.models.Assignment;
-
-import java.util.ArrayList;
-import java.util.Date;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
+        setContentView(R.layout.activity_main);
     }
 }

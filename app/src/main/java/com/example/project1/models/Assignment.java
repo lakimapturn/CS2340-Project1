@@ -1,8 +1,13 @@
 package com.example.project1.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
-public class Assignment {
+public class Assignment implements Comparable<Assignment>, Parcelable {
     private String title;
     private Date dueDate;
     private String courseName;
@@ -16,6 +21,23 @@ public class Assignment {
     public Assignment() {
         this(null, null, null);
     }
+
+    protected Assignment(Parcel in) {
+        title = in.readString();
+        courseName = in.readString();
+    }
+
+    public static final Creator<Assignment> CREATOR = new Creator<Assignment>() {
+        @Override
+        public Assignment createFromParcel(Parcel in) {
+            return new Assignment(in);
+        }
+
+        @Override
+        public Assignment[] newArray(int size) {
+            return new Assignment[size];
+        }
+    };
 
     public String getTitle() {
         return title;
@@ -39,5 +61,31 @@ public class Assignment {
 
     public void setClassName(String courseName) {
         this.courseName = courseName;
+    }
+
+    @Override
+    public int compareTo(Assignment o) {
+        int diff = title.compareTo(o.title);
+        if (diff != 0) {
+            return diff;
+        }
+        diff = dueDate.compareTo(o.dueDate);
+        if (diff != 0) {
+            return diff;
+        }
+        diff = courseName.compareTo(o.courseName);
+        return diff;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeStringArray(new String[] {this.title,
+                this.dueDate.toString(),
+                this.courseName});
     }
 }
