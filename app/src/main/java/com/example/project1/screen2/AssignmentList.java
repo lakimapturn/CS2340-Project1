@@ -27,13 +27,6 @@ public class AssignmentList extends Fragment {
     public static ArrayList<Assignment> assignments = new ArrayList<>();
     private com.example.project1.components.ListAdapter<Assignment> listAdapter;
 
-    public AssignmentList() {
-//        assignments.add(new Assignment("Example1", new Date(), "12345"));
-//        assignments.add(new Assignment("Example2", new Date(), "12345"));
-//        assignments.add(new Assignment("Example3", new Date(), "12345"));
-//        assignments.add(new Assignment("Example4", new Date(), "12345"));
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,12 +1,15 @@
 package com.example.project1.models;
 
-public class ToDoItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class ToDoItem implements Parcelable {
     private String task;
-    private boolean completed;
 
     public ToDoItem(String task) {
         this.task = task;
-        this.completed = false;
     }
 
     public String getTask() {
@@ -17,11 +20,13 @@ public class ToDoItem {
         this.task = task;
     }
 
-    public boolean isCompleted() {
-        return completed;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeStringArray(new String[] {this.task});
     }
 }
