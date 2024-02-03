@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Project1</string>
+    <string name="date">JAN 01 2022</string>
+    <string name="date_prompt">Select Date:</string>
+    <string name="current_date">JAN 01 2020</string>
+    <string name="time_prompt">Select Time</string>
 </resources>
