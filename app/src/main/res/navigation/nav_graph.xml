@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/assignmentList">
+    <fragment
+        android:id="@+id/assignmentList"
+        android:name="com.example.project1.screen2.AssignmentList"
+        android:label="add_edit_assignment"
+        tools:layout="@layout/add_edit_assignment" >
+        <action
+            android:id="@+id/action_assignmentList2_to_addEditAssignments2"
+            app:destination="@id/addEditAssignments" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditAssignments"
+        android:name="com.example.project1.screen2.AddEditAssignments"
+        android:label="AddEditAssignments" >
+        <argument
+            android:name="editing"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_addEditAssignments2_to_assignmentList2"
+            app:destination="@id/assignmentList" />
+    </fragment>
+</navigation>

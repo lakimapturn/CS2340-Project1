@@ -1,4 +1,4 @@
-package com.example.project1.screen1;
+package com.example.project1.screen3;
 
 import android.os.Bundle;
 import android.widget.ListView;
@@ -9,27 +9,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project1.R;
 import com.example.project1.components.ListAdapter;
-import com.example.project1.models.Assignment;
-import com.example.project1.models.ClassInfo;
+import com.example.project1.models.Exam;
 
 import java.util.ArrayList;
-import java.util.Date;
 
-public class ClassList extends AppCompatActivity {
+public class ExamList extends AppCompatActivity {
 
-    ArrayList<ClassInfo> list = new ArrayList<>();
-    ListAdapter<ClassInfo> listAdapter;
+    ArrayList<Exam> list = new ArrayList<>();
+    ListAdapter<Exam> listAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
         TextView textView = findViewById(R.id.textView);
-        textView.setText("Class List");
+        textView.setText("Exam Information");
 
         ListView listView = findViewById(R.id.list);
-        listAdapter = new ListAdapter<>(ClassList.this, list);
-        ListAdapter<ClassInfo> customBaseAdapter = new ListAdapter<>(getApplicationContext(), list);
+        listAdapter = new ListAdapter<>(ExamList.this, list);
+        ListAdapter<Exam> customBaseAdapter = new ListAdapter<>(getApplicationContext(), list);
         listView.setAdapter(customBaseAdapter);
     }
 }
