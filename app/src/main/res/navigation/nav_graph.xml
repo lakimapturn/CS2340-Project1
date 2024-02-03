@@ -17,11 +17,9 @@
         android:id="@+id/addEditAssignments"
         android:name="com.example.project1.screen2.AddEditAssignments"
         android:label="AddEditAssignments" >
-        <argument
-            android:name="editing"
-            app:argType="boolean" />
         <action
             android:id="@+id/action_addEditAssignments2_to_assignmentList2"
             app:destination="@id/assignmentList" />
+        <argument android:name="data" />
     </fragment>
 </navigation>

@@ -57,14 +57,15 @@ public class AssignmentList extends Fragment {
         listView.setAdapter(listAdapter);
 
         view.findViewById(R.id.edit).setOnClickListener((View v) -> {
+            // TODO: how to check which list item was clicked
             AssignmentListDirections.ActionAssignmentList2ToAddEditAssignments2 action =
-                    AssignmentListDirections.actionAssignmentList2ToAddEditAssignments2(true);
+                    AssignmentListDirections.actionAssignmentList2ToAddEditAssignments2(null);
             NavHostFragment.findNavController(AssignmentList.this).navigate(action);
         });
 
         view.findViewById(R.id.add).setOnClickListener((View v) -> {
             AssignmentListDirections.ActionAssignmentList2ToAddEditAssignments2 action =
-                    AssignmentListDirections.actionAssignmentList2ToAddEditAssignments2(false);
+                    AssignmentListDirections.actionAssignmentList2ToAddEditAssignments2(null);
             NavHostFragment.findNavController(AssignmentList.this).navigate(action);
         });
 
