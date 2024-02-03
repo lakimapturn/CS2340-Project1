@@ -31,8 +31,34 @@
         <argument android:name="index"
             app:argType="integer" />
     </fragment>
+  <fragment android:id="@+id/addEditExams"
+        android:name="com.example.project1.screen3.AddEditExams"
+        android:label="AddEditExams" >
+        <action
+            android:id="@+id/action_addEditExams2_to_examList2"
+            app:destination="@id/examList" />
+        <argument android:name="index"
+            app:argType="integer" />
+    </fragment>
     <fragment
-        android:id="@+id/toDoList"
+        android:id="@+id/examList"
+        android:name="com.example.project1.screen3.ExamList"
+        android:label="add_edit_exam"
+        tools:layout="@layout/add_edit_exam" >
+        <action
+            android:id="@+id/action_examList2_to_addEditExams2"
+            app:destination="@id/addEditExams" />
+        <argument android:name="data"
+            app:argType="com.example.project1.models.Exam"
+app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="index"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+  <fragment
+android:id="@+id/toDoList"
         android:name="com.example.project1.screen4.ToDoList"
         android:label="ToDoList" >
         <action

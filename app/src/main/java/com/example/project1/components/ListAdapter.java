@@ -79,9 +79,10 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
             field3.setText(copy.getTime().toString());
         } else if (item instanceof Exam) {
             Exam copy = (Exam) item;
-            field1.setText(copy.getCourseName());
+            field1.setText(copy.getLocation());
             field2.setText(copy.getLocation());
-            field3.setText(copy.getData().toString());
+//            field3.setText(copy.getData().toString());
+            // TODO: implement date formatting
         }
 
         return view;
