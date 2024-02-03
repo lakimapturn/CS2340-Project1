@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
@@ -42,7 +42,7 @@ public class AddEditExams extends Fragment {
         location = view.findViewById(R.id.location_input);
 
         Button submit = view.findViewById(R.id.submit);
-        DatePicker datePicker = view.findViewById(R.id.date_picker);
+        CalendarView calendarView = view.findViewById(R.id.calender_view);
         TimePicker timePicker = view.findViewById(R.id.time_picker);
 
         int data = AddEditExamsArgs.fromBundle(getArguments()).getIndex();
@@ -58,7 +58,7 @@ public class AddEditExams extends Fragment {
 
         EditText field1 = location;
 
-        datePicker.init(dateTime.get(Calendar.YEAR), dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH), (view1, year, month, dayOfMonth) -> {
+        calendarView.setOnDateChangeListener((view1, year, month, dayOfMonth) -> {
             dateTime.set(Calendar.YEAR, year);
             dateTime.set(Calendar.MONTH, month);
             dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);

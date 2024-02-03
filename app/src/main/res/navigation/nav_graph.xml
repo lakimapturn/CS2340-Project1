@@ -95,5 +95,8 @@ android:id="@+id/toDoList"
         <action
             android:id="@+id/action_home2_to_toDoList"
             app:destination="@id/toDoList" />
+        <action
+            android:id="@+id/action_home2_to_examList"
+            app:destination="@id/examList" />
     </fragment>
 </navigation>
