@@ -16,9 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.project1.R;
 import com.example.project1.databinding.AddEditTodoBinding;
-import com.example.project1.models.Assignment;
 import com.example.project1.models.ToDoItem;
-import com.example.project1.screen2.AddEditAssignments;
 import com.example.project1.screen2.AddEditAssignmentsArgs;
 
 public class AddEditToDo extends Fragment {
@@ -36,7 +34,7 @@ public class AddEditToDo extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView title = view.findViewById(R.id.title_input);
+        TextView title = view.findViewById(R.id.class_input);
 
         Button submit = view.findViewById(R.id.submit);
 
@@ -51,7 +49,7 @@ public class AddEditToDo extends Fragment {
             submit.setText("Add");
         }
 
-        EditText field1 = view.findViewById(R.id.title_input);
+        EditText field1 = view.findViewById(R.id.class_input);
         CalendarView field3 = view.findViewById(R.id.calendar_view);
 
         submit.setOnClickListener(l -> {
