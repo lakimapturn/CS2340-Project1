@@ -37,7 +37,7 @@ public class AddEditAssignments extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         title = view.findViewById(R.id.class_input);
-        associatedClass = view.findViewById(R.id.time_input);
+        associatedClass = view.findViewById(R.id.class_name_input);
 
         Button submit = view.findViewById(R.id.submit);
 
@@ -54,7 +54,7 @@ public class AddEditAssignments extends Fragment {
         }
 
         EditText field1 = view.findViewById(R.id.class_input);
-        EditText field2 = view.findViewById(R.id.time_input);
+        EditText field2 = view.findViewById(R.id.class_name_input);
         CalendarView field3 = view.findViewById(R.id.calendar_view);
 
         submit.setOnClickListener(l -> {

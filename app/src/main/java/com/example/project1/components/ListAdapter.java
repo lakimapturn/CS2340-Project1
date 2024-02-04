@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -74,10 +73,12 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
             field2.setText(copy.getClassName());
             field3.setText(sdf.format(copy.getDueDate()));
         } else if (item instanceof ClassInfo) {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+
             ClassInfo copy = (ClassInfo) item;
             field1.setText(copy.getCourseName());
             field2.setText(copy.getInstructor());
-            field3.setText(copy.getTime().toString());
+            field3.setText(sdf.format(copy.getTime()));
         } else if (item instanceof Exam) {
             SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d, HH:mm");
             Exam copy = (Exam) item;

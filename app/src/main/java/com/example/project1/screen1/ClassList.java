@@ -18,6 +18,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.project1.R;
 import com.example.project1.components.ListAdapter;
 import com.example.project1.models.Assignment;
+import com.example.project1.models.ClassInfo;
 import com.example.project1.screen2.AssignmentListArgs;
 import com.example.project1.screen2.AssignmentListDirections;
 
@@ -26,37 +27,37 @@ import java.util.Date;
 
 public class ClassList extends Fragment {
 
-    public static ArrayList<Assignment> assignments = new ArrayList<>();
-    private com.example.project1.components.ListAdapter<Assignment> listAdapter;
+    public static ArrayList<ClassInfo> classList = new ArrayList<>();
+    private com.example.project1.components.ListAdapter<ClassInfo> listAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View AssignmentListLayout = inflater.inflate(R.layout.list_view, container, false);
+        View ClassListLayout = inflater.inflate(R.layout.list_view, container, false);
 
-        TextView textView = AssignmentListLayout.findViewById(R.id.textView);
-        textView.setText("Assignments");
+        TextView textView = ClassListLayout.findViewById(R.id.textView);
+        textView.setText("Class Information");
 
-        Button addButton = AssignmentListLayout.findViewById(R.id.add);
-        addButton.setText("Add Assignment");
+        Button addButton = ClassListLayout.findViewById(R.id.add);
+        addButton.setText("Add Class");
 
-        return AssignmentListLayout;
+        return ClassListLayout;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Assignment a = AssignmentListArgs.fromBundle(getArguments()).getData();
-        int index = AssignmentListArgs.fromBundle(getArguments()).getIndex();
+        ClassInfo c = ClassListArgs.fromBundle(getArguments()).getData();
+        int index = ClassListArgs.fromBundle(getArguments()).getIndex();
 
-        if(index != -1) {
-            assignments.set(index, a);
-        } else if (a != null) {
-            assignments.add(a);
+        if (index != -1) {
+            classList.set(index, c);
+        } else if (c != null) {
+            classList.add(c);
         }
 
         ListView listView = view.findViewById(R.id.list);
-        listAdapter = new ListAdapter<>(view.getContext(), assignments);
+        listAdapter = new ListAdapter<>(view.getContext(), classList);
         listView.setAdapter(listAdapter);
 
         listAdapter.setOnItemClickListener(new ListAdapter.OnItemClickListenerInterface() {
@@ -64,15 +65,15 @@ public class ClassList extends Fragment {
             public void onItemClick(int position) {
                 System.out.println(position);
 
-                AssignmentListDirections.ActionAssignmentList2ToAddEditAssignments2 action =
-                        AssignmentListDirections.actionAssignmentList2ToAddEditAssignments2(position);
+                ClassListDirections.ActionClassList3ToAddEditClasses3 action =
+                        ClassListDirections.actionClassList3ToAddEditClasses3(position);
                 NavHostFragment.findNavController(ClassList.this).navigate(action);
             }
         });
 
         view.findViewById(R.id.add).setOnClickListener((View v) -> {
-            AssignmentListDirections.ActionAssignmentList2ToAddEditAssignments2 action =
-                    AssignmentListDirections.actionAssignmentList2ToAddEditAssignments2(-1);
+            ClassListDirections.ActionClassList3ToAddEditClasses3 action =
+                    ClassListDirections.actionClassList3ToAddEditClasses3(-1);
             NavHostFragment.findNavController(ClassList.this).navigate(action);
         });
 
