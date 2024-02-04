@@ -1,19 +1,15 @@
 package com.example.project1.screen2;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -22,7 +18,6 @@ import com.example.project1.databinding.AddEditAssignmentBinding;
 import com.example.project1.models.Assignment;
 
 import java.util.Date;
-import java.util.Random;
 
 public class AddEditAssignments extends Fragment {
 
@@ -41,8 +36,8 @@ public class AddEditAssignments extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        title = view.findViewById(R.id.title_input);
-        associatedClass = view.findViewById(R.id.class_input);
+        title = view.findViewById(R.id.class_input);
+        associatedClass = view.findViewById(R.id.time_input);
 
         Button submit = view.findViewById(R.id.submit);
 
@@ -58,8 +53,8 @@ public class AddEditAssignments extends Fragment {
             submit.setText("Add");
         }
 
-        EditText field1 = view.findViewById(R.id.title_input);
-        EditText field2 = view.findViewById(R.id.class_input);
+        EditText field1 = view.findViewById(R.id.class_input);
+        EditText field2 = view.findViewById(R.id.time_input);
         CalendarView field3 = view.findViewById(R.id.calendar_view);
 
         submit.setOnClickListener(l -> {

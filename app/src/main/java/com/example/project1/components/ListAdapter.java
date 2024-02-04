@@ -1,4 +1,5 @@
 package com.example.project1.components;
+import java.text.SimpleDateFormat;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -78,11 +79,11 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
             field2.setText(copy.getInstructor());
             field3.setText(copy.getTime().toString());
         } else if (item instanceof Exam) {
+            SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d, HH:mm");
             Exam copy = (Exam) item;
             field1.setText(copy.getLocation());
-            field2.setText(copy.getLocation());
-//            field3.setText(copy.getData().toString());
-            // TODO: implement date formatting
+            field2.setVisibility(View.GONE);
+            field3.setText(sdf.format(copy.getDateTime()));
         }
 
         return view;

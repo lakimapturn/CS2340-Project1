@@ -13,7 +13,7 @@
 <!--        android:ems="10"-->
 <!--        android:inputType="text"-->
 <!--        android:text="Title"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/date_picker"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/calender_view"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintHorizontal_bias="0.497"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
@@ -27,7 +27,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="Location"
-        app:layout_constraintBottom_toTopOf="@+id/date_picker"
+        app:layout_constraintBottom_toTopOf="@+id/calender_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.205" />
 
     <CalendarView
-        android:id="@+id/date_picker"
+        android:id="@+id/calender_view"
         android:layout_width="305dp"
         android:layout_height="296dp"
         android:layout_marginTop="52dp"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_picker"
+        app:layout_constraintTop_toBottomOf="@+id/calender_view"
         app:layout_constraintVertical_bias="0.186" />
 
     <Button

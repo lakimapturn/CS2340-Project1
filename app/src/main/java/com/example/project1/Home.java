@@ -48,6 +48,5 @@ public class Home extends Fragment {
             HomeDirections.ActionHome2ToExamList action = HomeDirections.actionHome2ToExamList();
             NavHostFragment.findNavController(Home.this).navigate(action);
         });
-
     }
 }
