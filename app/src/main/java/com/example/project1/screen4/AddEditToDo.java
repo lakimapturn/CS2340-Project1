@@ -60,10 +60,8 @@ public class AddEditToDo extends Fragment {
                             .setData(new ToDoItem(field1.getText().toString()))
                             .setIndex(data);
 
-
             NavHostFragment.findNavController(AddEditToDo.this).navigate(action);
         });
-
 
         view.findViewById(R.id.cancel).setOnClickListener(l -> {
             NavHostFragment.findNavController(AddEditToDo.this).navigate(

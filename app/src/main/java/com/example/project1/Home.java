@@ -44,5 +44,10 @@ public class Home extends Fragment {
             NavHostFragment.findNavController(Home.this).navigate(action);
         });
 
+        button4.setOnClickListener(l -> {
+            HomeDirections.ActionHome2ToExamList action = HomeDirections.actionHome2ToExamList();
+            NavHostFragment.findNavController(Home.this).navigate(action);
+        });
+
     }
 }

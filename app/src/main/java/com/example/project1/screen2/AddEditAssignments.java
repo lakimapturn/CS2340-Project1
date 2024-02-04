@@ -69,7 +69,6 @@ public class AddEditAssignments extends Fragment {
                             field2.getText().toString()))
                             .setIndex(data);
 
-
             NavHostFragment.findNavController(AddEditAssignments.this).navigate(action);
         });
 
