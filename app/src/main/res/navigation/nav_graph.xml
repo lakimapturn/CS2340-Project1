@@ -57,6 +57,7 @@ app:nullable="true"
             app:argType="integer"
             android:defaultValue="-1" />
     </fragment>
+
   <fragment
 android:id="@+id/toDoList"
         android:name="com.example.project1.screen4.ToDoList"
@@ -74,6 +75,7 @@ android:id="@+id/toDoList"
             app:argType="integer"
             android:defaultValue="-1" />
     </fragment>
+
     <fragment
         android:id="@+id/addEditToDo"
         android:name="com.example.project1.screen4.AddEditToDo"
@@ -85,6 +87,7 @@ android:id="@+id/toDoList"
             android:name="index"
             app:argType="integer" />
     </fragment>
+
     <fragment
         android:id="@+id/home2"
         android:name="com.example.project1.Home"
@@ -98,5 +101,35 @@ android:id="@+id/toDoList"
         <action
             android:id="@+id/action_home2_to_examList"
             app:destination="@id/examList" />
+    </fragment>
+
+
+    <argument android:name="data"
+        app:argType="com.example.project1.models.ClassInfo"
+        app:nullable="true"
+        android:defaultValue="@null" />
+    <argument
+        android:name="index"
+        app:argType="integer"
+        android:defaultValue="-1" />
+    <argument
+        android:name="index"
+        app:argType="integer" />
+    <fragment
+        android:id="@+id/classList3"
+        android:name="com.example.project1.screen1.ClassList"
+        android:label="add_edit_class"
+        tools:layout="@layout/add_edit_class" >
+        <action
+            android:id="@+id/action_classList3_to_addEditClasses3"
+            app:destination="@id/addEditClasses3" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditClasses3"
+        android:name="com.example.project1.screen1.AddEditClasses"
+        android:label="AddEditClasses" >
+        <action
+            android:id="@+id/action_addEditClasses3_to_classList3"
+            app:destination="@id/classList3" />
     </fragment>
 </navigation>
