@@ -11,9 +11,9 @@
         android:id="@+id/assignment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List Title"
+        android:text="Assignments"
         android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/add_assignment"
+        app:layout_constraintBottom_toBottomOf="@+id/add_assignment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,17 +25,28 @@
         android:layout_marginBottom="22dp"
         android:text="Add"
         app:layout_constraintBottom_toTopOf="@+id/assignments_list"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sort_date"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/assignments_list"
         android:layout_width="411dp"
         android:layout_height="540dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:clickable="true" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/sort_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Sort"
+        app:layout_constraintBottom_toTopOf="@+id/assignments_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

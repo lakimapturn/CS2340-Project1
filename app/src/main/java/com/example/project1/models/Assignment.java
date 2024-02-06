@@ -65,16 +65,7 @@ public class Assignment implements Comparable<Assignment>, Parcelable {
 
     @Override
     public int compareTo(Assignment o) {
-        int diff = title.compareTo(o.title);
-        if (diff != 0) {
-            return diff;
-        }
-        diff = dueDate.compareTo(o.dueDate);
-        if (diff != 0) {
-            return diff;
-        }
-        diff = courseName.compareTo(o.courseName);
-        return diff;
+        return dueDate.compareTo(o.dueDate);
     }
 
     @Override

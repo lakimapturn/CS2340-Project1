@@ -14,13 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.project1.R;
-import com.example.project1.components.ListAdapter;
 import com.example.project1.components.ToDoAdapter;
-import com.example.project1.models.Assignment;
 import com.example.project1.models.ToDoItem;
-import com.example.project1.screen2.AssignmentList;
-import com.example.project1.screen2.AssignmentListArgs;
-import com.example.project1.screen2.AssignmentListDirections;
 
 import java.util.ArrayList;
 
@@ -34,10 +29,10 @@ public class ToDoList extends Fragment {
         super.onCreate(savedInstanceState);
         View ToDoListLayout = inflater.inflate(R.layout.list_view, container, false);
 
-        TextView textView = ToDoListLayout.findViewById(R.id.textView);
+        TextView textView = ToDoListLayout.findViewById(R.id.assignment_title);
         textView.setText("Tasks");
 
-        Button addButton = ToDoListLayout.findViewById(R.id.add);
+        Button addButton = ToDoListLayout.findViewById(R.id.add_assignment);
         addButton.setText("Add Task");
 
         return ToDoListLayout;
@@ -55,7 +50,7 @@ public class ToDoList extends Fragment {
             todoList.add(t);
         }
 
-        ListView listView = view.findViewById(R.id.list);
+        ListView listView = view.findViewById(R.id.assignments_list);
         listAdapter = new ToDoAdapter(view.getContext(), todoList);
         listView.setAdapter(listAdapter);
 
@@ -70,7 +65,7 @@ public class ToDoList extends Fragment {
             }
         });
 
-        view.findViewById(R.id.add).setOnClickListener((View v) -> {
+        view.findViewById(R.id.add_assignment).setOnClickListener((View v) -> {
             ToDoListDirections.ActionToDoListToAddEditToDo action =
                     ToDoListDirections.actionToDoListToAddEditToDo(-1);
             NavHostFragment.findNavController(ToDoList.this).navigate(action);

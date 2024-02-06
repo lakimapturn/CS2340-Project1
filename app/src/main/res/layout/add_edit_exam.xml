@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+add .<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,25 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".screen2.AssignmentList">
 
-<!--    <EditText-->
-<!--        android:id="@+id/title_input"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="text"-->
-<!--        android:text="Title"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/calender_view"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.497"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.119" />-->
-
     <EditText
         android:id="@+id/location_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginTop="30dp"
         android:inputType="text"
         android:text="Location"
         app:layout_constraintBottom_toTopOf="@+id/calender_view"

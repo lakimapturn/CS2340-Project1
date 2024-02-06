@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,13 +15,9 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.project1.R;
 import com.example.project1.components.ListAdapter;
-import com.example.project1.models.Assignment;
 import com.example.project1.models.ClassInfo;
-import com.example.project1.screen2.AssignmentListArgs;
-import com.example.project1.screen2.AssignmentListDirections;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ClassList extends Fragment {
 
@@ -35,10 +29,10 @@ public class ClassList extends Fragment {
         super.onCreate(savedInstanceState);
         View ClassListLayout = inflater.inflate(R.layout.list_view, container, false);
 
-        TextView textView = ClassListLayout.findViewById(R.id.textView);
+        TextView textView = ClassListLayout.findViewById(R.id.assignment_title);
         textView.setText("Class Information");
 
-        Button addButton = ClassListLayout.findViewById(R.id.add);
+        Button addButton = ClassListLayout.findViewById(R.id.add_assignment);
         addButton.setText("Add Class");
 
         return ClassListLayout;
@@ -56,7 +50,7 @@ public class ClassList extends Fragment {
             classList.add(c);
         }
 
-        ListView listView = view.findViewById(R.id.list);
+        ListView listView = view.findViewById(R.id.assignments_list);
         listAdapter = new ListAdapter<>(view.getContext(), classList);
         listView.setAdapter(listAdapter);
 
@@ -71,7 +65,7 @@ public class ClassList extends Fragment {
             }
         });
 
-        view.findViewById(R.id.add).setOnClickListener((View v) -> {
+        view.findViewById(R.id.add_assignment).setOnClickListener((View v) -> {
             ClassListDirections.ActionClassList3ToAddEditClasses3 action =
                     ClassListDirections.actionClassList3ToAddEditClasses3(-1);
             NavHostFragment.findNavController(ClassList.this).navigate(action);
