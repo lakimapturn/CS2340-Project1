@@ -1,7 +1,5 @@
 package com.example.project1.screen3;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +18,6 @@ import com.example.project1.databinding.AddEditExamBinding;
 import com.example.project1.models.Exam;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddEditExams extends Fragment {
 
@@ -43,14 +40,17 @@ public class AddEditExams extends Fragment {
 
         Button submit = view.findViewById(R.id.submit);
         CalendarView calendarView = view.findViewById(R.id.calender_view);
-        TimePicker timePicker = view.findViewById(R.id.time_picker);
+        TimePicker timePicker = view.findViewById(R.id.class_time_picker);
 
         int data = AddEditExamsArgs.fromBundle(getArguments()).getIndex();
 
         if (data != -1) {
             Exam a = ExamList.Exams.get(data);
-            System.out.println(data);
+
             location.setText(a.getLocation());
+            calendarView.setDate(a.getDateTime().getTime());
+            timePicker.setHour(a.getDateTime().getHours());
+            timePicker.setMinute(a.getDateTime().getMinutes());
             submit.setText("Edit");
         } else {
             submit.setText("Add");

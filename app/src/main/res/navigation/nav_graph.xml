@@ -105,35 +105,37 @@
         <action
             android:id="@+id/action_home2_to_examList"
             app:destination="@id/examList" />
+        <action
+            android:id="@+id/action_home2_to_classList3"
+            app:destination="@id/classList3" />
     </fragment>
-
-
-    <argument android:name="data"
-        app:argType="com.example.project1.models.ClassInfo"
-        app:nullable="true"
-        android:defaultValue="@null" />
-    <argument
-        android:name="index"
-        app:argType="integer"
-        android:defaultValue="-1" />
-    <argument
-        android:name="index"
-        app:argType="integer" />
     <fragment
         android:id="@+id/classList3"
         android:name="com.example.project1.screen1.ClassList"
         android:label="add_edit_class"
-        tools:layout="@layout/add_edit_class" >
+        tools:layout="@layout/add_edit_class">
         <action
             android:id="@+id/action_classList3_to_addEditClasses3"
             app:destination="@id/addEditClasses3" />
+        <argument
+            android:name="data"
+            android:defaultValue="@null"
+            app:argType="com.example.project1.models.ClassInfo"
+            app:nullable="true" />
+        <argument
+            android:name="index"
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/addEditClasses3"
         android:name="com.example.project1.screen1.AddEditClasses"
-        android:label="AddEditClasses" >
+        android:label="AddEditClasses">
         <action
             android:id="@+id/action_addEditClasses3_to_classList3"
             app:destination="@id/classList3" />
+        <argument
+            android:name="index"
+            app:argType="integer" />
     </fragment>
 </navigation>

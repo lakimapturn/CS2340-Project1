@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,7 +18,8 @@ import com.example.project1.components.ListAdapter;
 import com.example.project1.models.Assignment;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collection;
+import java.util.Collections;
 
 public class AssignmentList extends Fragment {
 
@@ -30,12 +29,12 @@ public class AssignmentList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View AssignmentListLayout = inflater.inflate(R.layout.list_view, container, false);
+        View AssignmentListLayout = inflater.inflate(R.layout.assignments_view, container, false);
 
-        TextView textView = AssignmentListLayout.findViewById(R.id.textView);
+        TextView textView = AssignmentListLayout.findViewById(R.id.assignment_title);
         textView.setText("Assignments");
 
-        Button addButton = AssignmentListLayout.findViewById(R.id.add);
+        Button addButton = AssignmentListLayout.findViewById(R.id.add_assignment);
         addButton.setText("Add Assignment");
 
         return AssignmentListLayout;
@@ -53,7 +52,7 @@ public class AssignmentList extends Fragment {
             assignments.add(a);
         }
 
-        ListView listView = view.findViewById(R.id.list);
+        ListView listView = view.findViewById(R.id.assignments_list);
         listAdapter = new ListAdapter<>(view.getContext(), assignments);
         listView.setAdapter(listAdapter);
 
@@ -68,10 +67,16 @@ public class AssignmentList extends Fragment {
             }
         });
 
-        view.findViewById(R.id.add).setOnClickListener((View v) -> {
+        view.findViewById(R.id.add_assignment).setOnClickListener((View v) -> {
             AssignmentListDirections.ActionAssignmentList2ToAddEditAssignments2 action =
                     AssignmentListDirections.actionAssignmentList2ToAddEditAssignments2(-1);
             NavHostFragment.findNavController(AssignmentList.this).navigate(action);
+        });
+
+        view.findViewById(R.id.sort_date).setOnClickListener((View v) -> {
+            Collections.sort(assignments);
+            listAdapter = new ListAdapter<>(view.getContext(), assignments);
+            listView.setAdapter(listAdapter);
         });
 
     }

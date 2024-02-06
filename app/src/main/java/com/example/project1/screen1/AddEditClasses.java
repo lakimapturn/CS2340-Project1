@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,30 +14,18 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.project1.R;
-import com.example.project1.components.TimePicker;
-import com.example.project1.databinding.AddEditAssignmentBinding;
 import com.example.project1.databinding.AddEditClassBinding;
-import com.example.project1.models.Assignment;
 import com.example.project1.models.ClassInfo;
-import com.example.project1.models.Exam;
-import com.example.project1.screen2.AddEditAssignmentsArgs;
-import com.example.project1.screen2.AddEditAssignmentsDirections;
-import com.example.project1.screen2.AssignmentList;
-import com.example.project1.screen3.AddEditExams;
-import com.example.project1.screen3.AddEditExamsDirections;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class AddEditClasses extends Fragment {
 
-    private AddEditAssignmentBinding binding;
-
-    private EditText title;
-    private EditText professorName;
+    private AddEditClassBinding binding;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = AddEditAssignmentBinding.inflate(inflater, container, false);
+        binding = AddEditClassBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
     }
@@ -45,42 +33,49 @@ public class AddEditClasses extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        title = view.findViewById(R.id.class_input);
-        professorName = view.findViewById(R.id.time_input);
+        EditText title = view.findViewById(R.id.class_input);
+        EditText professorName = view.findViewById(R.id.instructor_input);
+        TimePicker timePicker = view.findViewById(R.id.class_time_picker);
+        Calendar time = Calendar.getInstance();
 
         Button submit = view.findViewById(R.id.submit);
 
-        int data = AddEditAssignmentsArgs.fromBundle(getArguments()).getIndex();
+        int data = AddEditClassesArgs.fromBundle(getArguments()).getIndex();
 
         if (data != -1) {
-            Assignment a = AssignmentList.assignments.get(data);
-            System.out.println(data);
-            title.setText(a.getTitle());
-            professorName.setText(a.getClassName());
+            ClassInfo c = ClassList.classList.get(data);
+
+            title.setText(c.getCourseName());
+            professorName.setText(c.getInstructor());
+            timePicker.setHour(c.getTime().getHours());
+            timePicker.setMinute(c.getTime().getMinutes());
+
             submit.setText("Edit");
         } else {
             submit.setText("Add");
         }
 
-        EditText field1 = view.findViewById(R.id.class_input);
-        EditText field2 = view.findViewById(R.id.time_input);
-        EditText field3 = view.findViewById(R.id.instructor_input);
+        timePicker.setIs24HourView(true);
+        timePicker.setOnTimeChangedListener((view12, hourOfDay, minute) -> {
+            time.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            time.set(Calendar.MINUTE, minute);
+        });
 
         submit.setOnClickListener(l -> {
-//            AddEditClassesDirections.ActionAddEditClasses2ToClassList2 action =
-//                    AddEditClassesDirections.actionAddEditClasses2ToExamList2()
-//                            .setData(new ClassInfo(field1.getText().toString(), -------,
-//                                    field3.getText().toString()))
-//                            .setIndex(data);
-//
-//            NavHostFragment.findNavController(AddEditClasses.this).navigate(action);
+            AddEditClassesDirections.ActionAddEditClasses3ToClassList3 action =
+                    AddEditClassesDirections.actionAddEditClasses3ToClassList3()
+                            .setData(new ClassInfo(title.getText().toString(), time.getTime(),
+                                    professorName.getText().toString()))
+                            .setIndex(data);
+
+            NavHostFragment.findNavController(AddEditClasses.this).navigate(action);
         });
 
 
-//        view.findViewById(R.id.cancel).setOnClickListener(l -> {
-//            NavHostFragment.findNavController(AddEditClasses.this).navigate(
-////                    AddEditClassesDirections.actionAddEditClasses2ToClassList2());
-//        });
+        view.findViewById(R.id.cancel).setOnClickListener(l -> {
+            NavHostFragment.findNavController(AddEditClasses.this).navigate(
+                    AddEditClassesDirections.actionAddEditClasses3ToClassList3());
+        });
     }
 
     @Override

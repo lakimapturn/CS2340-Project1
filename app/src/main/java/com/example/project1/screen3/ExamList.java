@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,7 +18,6 @@ import com.example.project1.components.ListAdapter;
 import com.example.project1.models.Exam;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ExamList extends Fragment {
 
@@ -39,10 +36,10 @@ public class ExamList extends Fragment {
         super.onCreate(savedInstanceState);
         View ExamListLayout = inflater.inflate(R.layout.list_view, container, false);
 
-        TextView textView = ExamListLayout.findViewById(R.id.textView);
+        TextView textView = ExamListLayout.findViewById(R.id.assignment_title);
         textView.setText("Exams");
 
-        Button addButton = ExamListLayout.findViewById(R.id.add);
+        Button addButton = ExamListLayout.findViewById(R.id.add_assignment);
         addButton.setText("Add Exam");
 
         return ExamListLayout;
@@ -60,7 +57,7 @@ public class ExamList extends Fragment {
             Exams.add(a);
         }
 
-        ListView listView = view.findViewById(R.id.list);
+        ListView listView = view.findViewById(R.id.assignments_list);
         listAdapter = new ListAdapter<>(view.getContext(), Exams);
         listView.setAdapter(listAdapter);
 
@@ -75,7 +72,7 @@ public class ExamList extends Fragment {
             }
         });
 
-        view.findViewById(R.id.add).setOnClickListener((View v) -> {
+        view.findViewById(R.id.add_assignment).setOnClickListener((View v) -> {
             ExamListDirections.ActionExamList2ToAddEditExams2 action =
                     ExamListDirections.actionExamList2ToAddEditExams2(-1);
             NavHostFragment.findNavController(ExamList.this).navigate(action);

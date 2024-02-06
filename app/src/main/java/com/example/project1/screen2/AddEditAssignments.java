@@ -17,6 +17,7 @@ import com.example.project1.R;
 import com.example.project1.databinding.AddEditAssignmentBinding;
 import com.example.project1.models.Assignment;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class AddEditAssignments extends Fragment {
@@ -25,6 +26,7 @@ public class AddEditAssignments extends Fragment {
 
     private EditText title;
     private EditText associatedClass;
+    private Calendar dateTime = Calendar.getInstance();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,8 @@ public class AddEditAssignments extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         title = view.findViewById(R.id.class_input);
-        associatedClass = view.findViewById(R.id.time_input);
+        associatedClass = view.findViewById(R.id.class_name_input);
+        CalendarView calendarView = view.findViewById(R.id.calendar_view);
 
         Button submit = view.findViewById(R.id.submit);
 
@@ -45,7 +48,7 @@ public class AddEditAssignments extends Fragment {
 
         if (data != -1) {
             Assignment a = AssignmentList.assignments.get(data);
-            System.out.println(data);
+            calendarView.setDate(a.getDueDate().getTime());
             title.setText(a.getTitle());
             associatedClass.setText(a.getClassName());
             submit.setText("Edit");
@@ -54,13 +57,19 @@ public class AddEditAssignments extends Fragment {
         }
 
         EditText field1 = view.findViewById(R.id.class_input);
-        EditText field2 = view.findViewById(R.id.time_input);
+        EditText field2 = view.findViewById(R.id.class_name_input);
         CalendarView field3 = view.findViewById(R.id.calendar_view);
+
+        calendarView.setOnDateChangeListener((view1, year, month, dayOfMonth) -> {
+            dateTime.set(Calendar.YEAR, year);
+            dateTime.set(Calendar.MONTH, month);
+            dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        });
 
         submit.setOnClickListener(l -> {
             AddEditAssignmentsDirections.ActionAddEditAssignments2ToAssignmentList2 action =
                     AddEditAssignmentsDirections.actionAddEditAssignments2ToAssignmentList2()
-                    .setData(new Assignment(field1.getText().toString(), new Date(field3.getDate()),
+                    .setData(new Assignment(field1.getText().toString(), dateTime.getTime(),
                             field2.getText().toString()))
                             .setIndex(data);
 
