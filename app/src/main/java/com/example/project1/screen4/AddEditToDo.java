@@ -63,7 +63,7 @@ public class AddEditToDo extends Fragment {
 
         view.findViewById(R.id.cancel).setOnClickListener(l -> {
             NavHostFragment.findNavController(AddEditToDo.this).navigate(
-                    ToDoListDirections.actionToDoListToAddEditToDo(data));
+                    AddEditToDoDirections.actionAddEditToDoToToDoList());
         });
     }
 
